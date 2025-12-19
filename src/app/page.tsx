@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+
 const projects = [
   {
     title: "Fonderie fonte — Suivi production prototype & résolution de problèmes (sableriE)",
