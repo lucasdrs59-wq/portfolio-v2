@@ -5,57 +5,39 @@ export type Project = {
   tags: string[];
   intro: string;
   highlights: string[];
-  sections: {
-    title: string;
-    bullets: string[];
-  }[];
+  sections: { title: string; bullets: string[] }[];
 };
 
 export const projects: Project[] = [
   {
     slug: "fonderie-prototype-sablerie",
-    title: "Fonderie fonte — Suivi production prototype & résolution de problèmes (sableriE)",
+    title: "Fonderie fonte — Suivi production prototype & résolution de problèmes (sablerie)",
     period: "BTS • Stage (8 semaines)",
     tags: ["Fonderie", "Production", "Qualité", "Terrain"],
     intro:
-      "Projet terrain centré sur le suivi d’une production prototype et la résolution de problèmes en sablerie, avec capitalisation des actions.",
+      "Suivi de production sur pièce prototype et résolution de problèmes en atelier (sablerie).",
     highlights: [
-      "Suivi de production sur pièce prototype (atelier).",
-      "Analyse des causes + actions correctives (terrain).",
-      "Standardisation progressive et retour d’expérience.",
+      "Suivi terrain & analyse des écarts",
+      "Actions correctives en sablerie",
+      "Standardisation progressive (retour d’expérience)",
     ],
     sections: [
       {
-        title: "Contexte & objectif",
+        title: "Contexte",
         bullets: [
-          "Production prototype en fonderie fonte.",
-          "Réduire les défauts/variabilités constatés en sablerie.",
-          "Mettre en place une démarche structurée (simple, terrain).",
+          "Prototype en production, besoin de stabiliser la qualité et le flux.",
+          "Travail au plus près des opérateurs et du process.",
         ],
       },
       {
-        title: "Démarche",
+        title: "Actions",
         bullets: [
-          "Observation atelier + collecte des faits (quoi/où/quand).",
-          "Analyse causes (5 Why / Ishikawa selon le cas).",
-          "Tests d’actions correctives + validation.",
+          "Observation terrain + collecte d’infos (défauts, causes probables).",
+          "Proposition et test d’actions correctives.",
+          "Mise en forme des bonnes pratiques.",
         ],
       },
-      {
-        title: "Livrables",
-        bullets: [
-          "Synthèse problème / causes / actions.",
-          "Standard / consignes atelier (si applicable).",
-          "Capitalisation (retour d’expérience).",
-        ],
-      },
-      {
-        title: "Résultats",
-        bullets: [
-          "Résultats anonymisés (chiffres ajoutables plus tard).",
-          "Stabilisation / réduction de défauts (qualitatif).",
-        ],
-      },
+      { title: "Résultats", bullets: ["Démarche structurée, capitalisation et meilleure maîtrise du process."] },
     ],
   },
   {
@@ -64,138 +46,63 @@ export const projects: Project[] = [
     period: "BTS • Projet de fin d’année",
     tags: ["Industrialisation", "CAO", "Outillage", "Qualité"],
     intro:
-      "Reconception complète d’une pièce (bras de levier) avec préparation industrialisation : CAO, simulation, outillage, mise en production et qualité.",
+      "Reconception et industrialisation d’un bras de levier en aluminium pour une étiqueteuse industrielle.",
     highlights: [
-      "Conception CAO + préparation industrialisation.",
-      "Simulation de coulée + préparation outillage.",
-      "Procédures moulage/coulée + contrôle qualité.",
+      "Conception CAO + préparation industrialisation",
+      "Simulation de coulée + préparation outillage",
+      "Procédures moulage/coulée + contrôle qualité",
     ],
     sections: [
       {
-        title: "Contexte & objectif",
-        bullets: [
-          "Reconcevoir une pièce pour fiabilité / fabricabilité.",
-          "Préparer la mise en production avec outillage.",
-          "Sécuriser la qualité via procédure et contrôle.",
-        ],
+        title: "Conception",
+        bullets: ["Modélisation CAO", "Prise en compte fabrication et tolérances"],
       },
       {
-        title: "Démarche",
-        bullets: [
-          "CAO + itérations de conception.",
-          "Simulation (coulée) + choix techniques.",
-          "Outillage + essais + ajustements.",
-        ],
+        title: "Industrialisation",
+        bullets: ["Outillage, impression 3D, mise en production", "Procédures & qualité"],
       },
-      {
-        title: "Livrables",
-        bullets: [
-          "Dossiers CAO.",
-          "Procédures moulage/coulée.",
-          "Plan de contrôle / critères qualité.",
-        ],
-      },
-      {
-        title: "Résultats",
-        bullets: [
-          "Prototype / mise en production (selon périmètre).",
-          "Qualité sécurisée par standards (qualitatif).",
-        ],
-      },
+      { title: "Résultats", bullets: ["Process documenté, production lancée avec contrôle qualité."] },
     ],
   },
   {
-    slug: "chaudronnerie-chiffrage-be-suivi",
-    title: "Chaudronnerie — Chiffrage, BE & suivi atelier",
+    slug: "chaudronnerie-chiffrage-suivi-affaires",
+    title: "Chaudronnerie — Chiffrage, BE & suivi d’affaires",
     period: "Licence • Alternance",
-    tags: ["Chiffrage", "BE", "Suivi prod", "Standardisation"],
+    tags: ["Chiffrage", "Excel", "BE", "Atelier"],
     intro:
-      "Structuration d’outils de chiffrage et support bureau d’études/atelier : suivi d’affaires, CAO et rédaction de notices.",
+      "Structuration d’outils Excel de chiffrage et contribution BE / suivi production atelier.",
     highlights: [
-      "Création/structuration d’outils Excel de chiffrage.",
-      "Suivi d’affaires et support atelier (terrain).",
-      "CAO installations + notices techniques.",
+      "Tableaux Excel de chiffrage",
+      "Suivi de production en atelier",
+      "Rédaction de notices techniques",
     ],
     sections: [
-      {
-        title: "Contexte & objectif",
-        bullets: [
-          "Chiffrage basé sur l’expérience → besoin d’outil plus structuré.",
-          "Améliorer la cohérence et la traçabilité.",
-          "Gagner du temps au quotidien.",
-        ],
-      },
-      {
-        title: "Démarche",
-        bullets: [
-          "Analyse des postes de coûts (temps, matière, sous-traitance).",
-          "Création d’un modèle Excel clair et réutilisable.",
-          "Itérations avec l’équipe (validation terrain).",
-        ],
-      },
-      {
-        title: "Livrables",
-        bullets: [
-          "Tableau Excel de chiffrage (version standard).",
-          "Règles / hypothèses documentées.",
-          "Support BE/atelier (plans, notices).",
-        ],
-      },
-      {
-        title: "Résultats",
-        bullets: [
-          "Chiffrages plus rapides et cohérents (qualitatif).",
-          "Base réutilisable et améliorable.",
-        ],
-      },
+      { title: "Outils", bullets: ["Structuration du chiffrage", "Capitalisation des hypothèses"] },
+      { title: "BE / Atelier", bullets: ["Dessins CAO", "Suivi d’avancement, échanges atelier"] },
+      { title: "Livrables", bullets: ["Notices techniques, documents internes"] },
     ],
   },
   {
     slug: "industrie4-erp-inventaire-codification",
-    title: "Usine 4.0 — ERP, inventaire & codification atelier",
+    title: "Industrie 4.0 — ERP, inventaire, codification & data atelier",
     period: "Mastère • Projet",
-    tags: ["ERP", "Data", "Méthodes", "Déploiement"],
+    tags: ["ERP", "Data", "Standardisation", "Terrain"],
     intro:
-      "Co-pilotage d’un projet ERP avec un gros lot terrain : inventaire, cartographie d’emplacements, codification et étiquetage pour produire une donnée exploitable.",
+      "Co-pilotage du changement ERP + inventaire fin d’année : codification, cartographie atelier, étiquetage, données exploitables.",
     highlights: [
-      "Modes opératoires + accompagnement.",
-      "Cartographie emplacements + étiquetage atelier.",
-      "Codification pièces/emplacements + data exploitable ERP.",
+      "Codification emplacements / pièces",
+      "Cartographie atelier + étiquetage",
+      "Modèles standards d’étiquettes",
     ],
     sections: [
-      {
-        title: "Contexte & objectif",
-        bullets: [
-          "Structurer l’atelier pour fiabiliser l’inventaire.",
-          "Créer une codification simple et déployable.",
-          "Rendre la donnée exploitable par l’ERP.",
-        ],
-      },
-      {
-        title: "Démarche",
-        bullets: [
-          "Définition des zones / emplacements (terrain).",
-          "Codification + règles de nommage.",
-          "Étiquetage + création des données.",
-        ],
-      },
-      {
-        title: "Livrables",
-        bullets: [
-          "Cartographie atelier (emplacements).",
-          "Modèles d’étiquettes standard.",
-          "Mode opératoire inventaire / saisie.",
-        ],
-      },
-      {
-        title: "Résultats",
-        bullets: [
-          "Inventaire plus fiable et plus rapide (qualitatif).",
-          "Base structurée pour l’ERP (qualitatif).",
-        ],
-      },
+      { title: "Cadrage", bullets: ["Objectifs inventaire", "Règles de codification"] },
+      { title: "Déploiement", bullets: ["Étiquetage, cartographie", "Création de données ERP-ready"] },
+      { title: "Résultats", bullets: ["Inventaire fiabilisé et base de données exploitable"] },
     ],
   },
 ];
 
-export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
+export function getProject(slug: string) {
+  const s = (slug || "").trim().toLowerCase();
+  return projects.find((p) => (p.slug || "").trim().toLowerCase() === s);
+}
