@@ -1,0 +1,26 @@
+name: Proposer une amélioration
+description: Relier une idée à un besoin utilisateur
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Besoin
+      description: Quel problème cette amélioration résout-elle ?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposition
+      description: Décrire la solution la plus simple envisagée.
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: Critère de réussite
+      description: Comment vérifier que l’amélioration est utile ?
+    validations:
+      required: true

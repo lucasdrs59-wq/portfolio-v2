@@ -1,0 +1,33 @@
+name: Signaler un bug
+description: Décrire un comportement incorrect et reproductible
+title: "fix: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Merci de ne joindre aucune donnée personnelle ou industrielle réelle.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problème observé
+      description: Que se passe-t-il ?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Étapes de reproduction
+      placeholder: Décrire les actions dans l’ordre.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Résultat attendu
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Navigateur et appareil
+      placeholder: Firefox 128, Android

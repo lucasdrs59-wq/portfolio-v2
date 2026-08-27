@@ -1,57 +1,66 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
+import { LogoMark } from "@/components/LogoMark";
+
+const navigation = [
+  { href: "/projets", label: "Projets" },
+  { href: "/a-propos", label: "À propos" },
+  { href: "/cv", label: "Parcours" },
+];
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-[radial-gradient(900px_500px_at_15%_10%,rgba(59,130,246,.18),transparent_60%),radial-gradient(900px_500px_at_85%_20%,rgba(245,158,11,.14),transparent_55%),linear-gradient(180deg,#070A10,#0B1020)] text-zinc-100">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-black/35 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="relative h-9 w-9 overflow-hidden rounded-full border border-white/15">
-              <Image
-                src="/avatar.jpg"
-                alt="Photo"
-                fill
-                className="object-cover"
-                sizes="36px"
-                priority
-              />
-            </div>
-            <div className="leading-tight">
-              <div className="text-sm font-semibold">Lucas Desrousseaux</div>
-              <div className="text-xs text-zinc-400">
-                Industrie 4.0 • Métallurgie (Fonderie & Chaudronnerie)
-              </div>
-            </div>
+    <div className="site-frame">
+      <header className="site-header">
+        <div className="site-header__inner">
+          <Link href="/" className="brand" aria-label="Lucas Desrousseaux — accueil">
+            <LogoMark className="brand__mark" />
+            <span className="brand__copy">
+              <strong>Lucas Desrousseaux</strong>
+              <small>Méthodes · Industrie 4.0</small>
+            </span>
           </Link>
 
-          <nav className="hidden items-center gap-5 text-sm text-zinc-300 md:flex">
-            <Link href="/projets" className="hover:text-white">
-              Projets
-            </Link>
-            <Link href="/a-propos" className="hover:text-white">
-              À propos
-            </Link>
-            <Link href="/cv" className="hover:text-white">
-              CV
-            </Link>
-            <Link
-              href="/contact"
-              className="rounded-xl border border-white/15 bg-white/5 px-3 py-1.5 hover:bg-white/10"
-            >
+          <nav className="site-nav" aria-label="Navigation principale">
+            {navigation.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+            <Link href="/contact" className="button button--small button--dark">
               Contact
             </Link>
           </nav>
         </div>
       </header>
 
-      <main>{children}</main>
+      <main id="contenu">{children}</main>
 
-      <footer className="border-t border-white/10 py-8">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 text-sm text-zinc-400">
-          <span>© {new Date().getFullYear()} Lucas Desrousseaux</span>
-          <span className="text-zinc-500">Portfolio — Industrie 4.0 • Métallurgie</span>
+      <footer className="site-footer">
+        <div className="container site-footer__inner">
+          <div className="site-footer__brand">
+            <LogoMark className="site-footer__mark" />
+            <div>
+              <strong>Lucas Desrousseaux</strong>
+              <p>Méthodes · Industrialisation · Métallurgie · Industrie 4.0</p>
+            </div>
+          </div>
+          <div className="site-footer__links" aria-label="Liens externes">
+            <a href="https://github.com/lucasdrs59-wq" target="_blank" rel="noreferrer">
+              GitHub <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/lucas-desrousseaux-53045b281"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn <span aria-hidden="true">↗</span>
+            </a>
+            <Link href="/contact">Contact</Link>
+          </div>
+          <p className="site-footer__legal">
+            © {new Date().getFullYear()} Lucas Desrousseaux · Données projets anonymisées.
+          </p>
         </div>
       </footer>
     </div>

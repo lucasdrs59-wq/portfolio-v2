@@ -1,164 +1,254 @@
 import Link from "next/link";
+import { ProjectShowcase } from "@/components/ProjectShowcase";
 import { SiteShell } from "@/components/SiteShell";
 import { projects } from "@/lib/projects";
 
+const expertise = [
+  {
+    number: "01",
+    title: "Méthodes & industrialisation",
+    text: "Passer du besoin au processus robuste : gammes, standards, flux, outillages et critères de validation.",
+    tags: ["Standardisation", "AMDEC", "Capabilité"],
+  },
+  {
+    number: "02",
+    title: "Data & Industrie 4.0",
+    text: "Structurer les données avant de digitaliser, puis construire des outils de pilotage réellement utilisables.",
+    tags: ["Power BI", "ERP", "Retool"],
+  },
+  {
+    number: "03",
+    title: "Métallurgie & terrain",
+    text: "Comprendre les contraintes de fabrication pour faire le lien entre atelier, méthodes, qualité et bureau d’études.",
+    tags: ["Fonderie", "Chaudronnerie", "Métrologie"],
+  },
+  {
+    number: "04",
+    title: "Adoption & amélioration",
+    text: "Déployer avec les utilisateurs : essais courts, documentation claire, formation et mesure des résultats.",
+    tags: ["PDCA", "DMAIC", "ADKAR"],
+  },
+];
+
+const method = [
+  { step: "01", title: "Observer", text: "Aller au poste, écouter et rendre le problème visible." },
+  { step: "02", title: "Structurer", text: "Clarifier les données, règles, rôles et critères de réussite." },
+  { step: "03", title: "Prototyper", text: "Tester une solution courte avec les personnes concernées." },
+  { step: "04", title: "Déployer", text: "Documenter, former, mesurer puis améliorer en continu." },
+];
+
 export default function Home() {
-  const featured = projects.slice(0, 3);
+  const featured = projects.filter((project) => project.featured).slice(0, 4);
 
   return (
     <SiteShell>
-      {/* HERO */}
-      <section className="mx-auto max-w-6xl px-5 pb-14 pt-14 md:pt-20">
-        <div className="grid gap-10 md:grid-cols-[1.2fr_.8fr]">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-              Portfolio • Projets • Méthodes • Résultats
+      <section className="hero">
+        <div className="hero__glow hero__glow--one" aria-hidden="true" />
+        <div className="hero__glow hero__glow--two" aria-hidden="true" />
+        <div className="container hero__grid">
+          <div className="hero__content">
+            <div className="availability-pill">
+              <span aria-hidden="true" />
+              Disponible pour un CDI dès septembre 2027
             </div>
-
-            <h1 className="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">
-              Chef de projet Industrie 4.0{" "}
-              <span className="text-zinc-300">—</span>{" "}
-              <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-blue-300 bg-clip-text text-transparent">
-                Métallurgie
-              </span>
+            <p className="kicker">Méthodes · Industrialisation · Métallurgie · Industrie 4.0</p>
+            <h1>
+              Je transforme les problèmes d’atelier en systèmes
+              <em> simples, mesurables et adoptés.</em>
             </h1>
-
-            <p className="mt-4 max-w-xl text-zinc-300">
-              Profil hybride : <b className="text-zinc-100">terrain</b> (fonderie/chaudronnerie,
-              industrialisation, qualité) + <b className="text-zinc-100">digital</b> (ERP, données,
-              standardisation). J’aime livrer des solutions concrètes : outils, standards, KPI,
-              adoption atelier.
+            <p className="hero__lead">
+              Un profil hybride terrain + digital pour fiabiliser les processus,
+              rendre les données utiles et faire vivre les solutions dans la durée.
             </p>
-
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/projets" className="rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black hover:opacity-90">
-                Voir mes projets
+            <div className="hero__actions">
+              <Link href="/projets" className="button button--primary">
+                Explorer les projets <span aria-hidden="true">→</span>
               </Link>
-              <a href="/cv.pdf" className="rounded-2xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10">
-                Télécharger mon CV
-              </a>
-              <a
-                href="https://www.linkedin.com/in/lucas-desrousseaux-53045b281"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-2xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10"
-              >
-                LinkedIn
-              </a>
+              <Link href="/contact" className="button button--ghost">
+                Échanger avec moi
+              </Link>
             </div>
-
-            <div className="mt-8 grid gap-3 md:grid-cols-3">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <div className="text-xs text-zinc-400">Signature</div>
-                <div className="mt-1 font-semibold">Métallurgie + Digital</div>
+            <div className="hero__meta">
+              <div>
+                <span className="hero__meta-icon" aria-hidden="true">⌖</span>
+                <p><strong>Lille & métropole européenne</strong><br />Mobilité Belgique frontalière</p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <div className="text-xs text-zinc-400">Ce que je livre</div>
-                <div className="mt-1 font-semibold">Standards, outils, KPI</div>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <div className="text-xs text-zinc-400">Approche</div>
-                <div className="mt-1 font-semibold">Terrain → données → déploiement</div>
+              <div>
+                <span className="hero__meta-icon" aria-hidden="true">↗</span>
+                <p><strong>GitHub documenté</strong><br />Code, décisions et études de cas</p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6 shadow-[0_30px_80px_rgba(0,0,0,.45)]">
-            <h2 className="text-lg font-semibold">En bref</h2>
-            <ul className="mt-4 space-y-2 text-sm text-zinc-300">
-              <li>• Projets atelier & BE : méthodes + exécution</li>
-              <li>• Qualité : standardisation, contrôle</li>
-              <li>• Industrie 4.0 : ERP, data, codification, inventaire</li>
-              <li>• Livrables clairs : modes opératoires, standards</li>
-            </ul>
-            <div className="mt-6 border-t border-white/10 pt-5 text-sm text-zinc-300">
-              Objectif : un portfolio “consultant/ingénieur” lisible, orienté résultats.
+          <div className="workflow-card" aria-label="Démarche de projet">
+            <div className="workflow-card__header">
+              <div>
+                <span>Ma chaîne de valeur</span>
+                <strong>Du réel au résultat</strong>
+              </div>
+              <span className="workflow-card__status">Système actif</span>
+            </div>
+            <div className="workflow-card__diagram">
+              {[
+                ["01", "Terrain", "Observer le flux"],
+                ["02", "Données", "Fiabiliser les faits"],
+                ["03", "Décision", "Rendre l’arbitrage clair"],
+                ["04", "Adoption", "Ancrer la solution"],
+              ].map(([number, title, text], index) => (
+                <div className="workflow-step" key={number}>
+                  <div className="workflow-step__node">
+                    <span>{number}</span>
+                    <i aria-hidden="true" />
+                  </div>
+                  <div>
+                    <strong>{title}</strong>
+                    <small>{text}</small>
+                  </div>
+                  {index < 3 ? <span className="workflow-step__line" aria-hidden="true" /> : null}
+                </div>
+              ))}
+            </div>
+            <div className="workflow-card__footer">
+              <span>Approches mobilisées</span>
+              <div>
+                <b>PDCA</b><b>DMAIC</b><b>ADKAR</b><b>Lean</b>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FEATURED PROJECTS */}
-      <section className="mx-auto max-w-6xl px-5 pb-14">
-        <div className="flex items-end justify-between gap-4">
+      <section className="metric-strip" aria-label="Chiffres clés">
+        <div className="container metric-strip__grid">
+          <div><strong>50+</strong><span>outils et composants structurés</span></div>
+          <div><strong>385</strong><span>résultats métrologiques analysés</span></div>
+          <div><strong>19/20</strong><span>projet d’industrialisation</span></div>
+          <div><strong>2×</strong><span>culture terrain et numérique</span></div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <p className="kicker">Sélection</p>
+              <h2>Des projets conçus pour être utiles.</h2>
+            </div>
+            <div className="section-heading__aside">
+              <p>Chaque étude explicite le problème, la démarche, les livrables et les résultats.</p>
+              <Link href="/projets">Voir les 6 projets <span aria-hidden="true">→</span></Link>
+            </div>
+          </div>
+          <ProjectShowcase projects={featured} compact />
+        </div>
+      </section>
+
+      <section className="section section--tint">
+        <div className="container">
+          <div className="section-heading section-heading--compact">
+            <div>
+              <p className="kicker">Double compétence</p>
+              <h2>Comprendre l’atelier. Structurer le système.</h2>
+            </div>
+          </div>
+          <div className="expertise-grid">
+            {expertise.map((item) => (
+              <article className="expertise-card" key={item.number}>
+                <span className="expertise-card__number">{item.number}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+                <div>{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container method-layout">
+          <div className="method-intro">
+            <p className="kicker">Méthode de travail</p>
+            <h2>Le digital commence par une réalité terrain bien comprise.</h2>
+            <p>
+              Je privilégie les cycles courts et les preuves : une donnée définie,
+              une responsabilité claire et un résultat que l’équipe peut vérifier.
+            </p>
+            <Link className="text-link" href="/a-propos">
+              Découvrir mon approche <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+          <ol className="method-list">
+            {method.map((item) => (
+              <li key={item.step}>
+                <span>{item.step}</span>
+                <div><strong>{item.title}</strong><p>{item.text}</p></div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section section--dark">
+        <div className="container">
+          <div className="section-heading section-heading--dark">
+            <div>
+              <p className="kicker">Expérience</p>
+              <h2>Une progression entre atelier, méthodes et transformation.</h2>
+            </div>
+          </div>
+          <div className="experience-track">
+            <article>
+              <span>Fondations</span><strong>Corri Servais</strong>
+              <p>Premiers repères industriels, lecture du terrain et exigence de fabrication.</p>
+            </article>
+            <article>
+              <span>Industrialisation</span><strong>Decoval</strong>
+              <p>Conception, méthodes et passage d’une solution technique vers la production.</p>
+            </article>
+            <article>
+              <span>Industrie 4.0</span><strong>Proferro</strong>
+              <p>Structuration des données, outils de pilotage et adoption par les utilisateurs.</p>
+            </article>
+          </div>
+          <p className="confidentiality-note">
+            Les contenus publics sont volontairement anonymisés et reconstruits avec des données synthétiques.
+          </p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container github-callout">
+          <div className="github-callout__symbol" aria-hidden="true">&lt;/&gt;</div>
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight">Projets sélectionnés</h2>
-            <p className="mt-2 text-sm text-zinc-400">
-              Études de cas (contexte → démarche → livrables → résultats).
+            <p className="kicker">GitHub comme preuve de travail</p>
+            <h2>Des projets lisibles, versionnés et documentés.</h2>
+            <p>
+              Chaque dépôt public vise le même standard : démarrage rapide,
+              architecture explicite, décisions tracées, données de démonstration
+              et règle d’archivage.
             </p>
           </div>
-          <Link href="/projets" className="text-sm text-zinc-300 hover:text-white">
-            Voir tout →
-          </Link>
-        </div>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {featured.map((p) => (
-            <Link
-              key={p.slug}
-              href={`/projets/${p.slug}`}
-              className="group rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6 hover:border-white/20"
-            >
-              <div className="text-xs text-zinc-400">{p.period}</div>
-              <h3 className="mt-2 text-base font-semibold">{p.title}</h3>
-              <p className="mt-3 text-sm text-zinc-300 line-clamp-3">{p.intro}</p>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {p.tags.slice(0, 3).map((t) => (
-                  <span key={t} className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-zinc-200">
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-5 text-sm text-zinc-400">
-                Ouvrir <span className="text-zinc-200 group-hover:underline">→</span>
-              </div>
-            </Link>
-          ))}
+          <a
+            className="button button--dark"
+            href="https://github.com/lucasdrs59-wq"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Voir le GitHub <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </section>
 
-      {/* METHOD */}
-      <section className="mx-auto max-w-6xl px-5 pb-14">
-        <h2 className="text-2xl font-semibold tracking-tight">Ma méthode</h2>
-        <p className="mt-2 max-w-2xl text-sm text-zinc-400">
-          Une logique simple, réplicable, terrain. Le but : livrer vite, bien, et faire adopter.
-        </p>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-4">
-          {[
-            { k: "1", t: "Comprendre terrain", d: "Observer, cartographier, écouter les contraintes réelles." },
-            { k: "2", t: "Structurer", d: "Règles, codification, standards. Base propre avant digital." },
-            { k: "3", t: "Outiller", d: "Tableaux, KPI, ERP, modes opératoires, templates." },
-            { k: "4", t: "Déployer", d: "Accompagner, former, ajuster, mesurer." },
-          ].map((x) => (
-            <div key={x.k} className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <div className="text-xs text-zinc-400">Étape {x.k}</div>
-              <div className="mt-2 font-semibold">{x.t}</div>
-              <div className="mt-2 text-sm text-zinc-300">{x.d}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="mx-auto max-w-6xl px-5 pb-16">
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-white/10 to-white/5 p-8">
-          <h2 className="text-2xl font-semibold tracking-tight">Travaillons ensemble</h2>
-          <p className="mt-2 max-w-2xl text-sm text-zinc-300">
-            Alternance, job, missions : je peux apporter une approche terrain + data pour structurer,
-            fiabiliser et accélérer.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/contact" className="rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black hover:opacity-90">
-              Me contacter
-            </Link>
-            <Link href="/cv" className="rounded-2xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10">
-              Voir le CV
-            </Link>
+      <section className="section section--cta">
+        <div className="container cta-card">
+          <div>
+            <p className="kicker">Et maintenant ?</p>
+            <h2>Vous avez un sujet terrain à rendre plus simple ?</h2>
+            <p>Parlons méthodes, données, industrialisation ou déploiement.</p>
           </div>
+          <Link href="/contact" className="button button--primary">
+            Prendre contact <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
     </SiteShell>

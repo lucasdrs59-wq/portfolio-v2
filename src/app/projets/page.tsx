@@ -1,48 +1,36 @@
-import Link from "next/link";
+import type { Metadata } from "next";
+import { ProjectShowcase } from "@/components/ProjectShowcase";
 import { SiteShell } from "@/components/SiteShell";
 import { projects } from "@/lib/projects";
+
+export const metadata: Metadata = {
+  title: "Projets",
+  description:
+    "Études de cas de Lucas Desrousseaux en méthodes, industrialisation, data, qualité et Industrie 4.0.",
+  alternates: { canonical: "/projets" },
+};
 
 export default function ProjetsPage() {
   return (
     <SiteShell>
-      <section className="mx-auto max-w-6xl px-5 py-14">
-        <h1 className="text-3xl font-semibold tracking-tight">Projets</h1>
-        <p className="mt-2 text-sm text-zinc-400">
-          Études de cas anonymisées : contexte → démarche → livrables → résultats.
-        </p>
-
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {projects.map((p) => (
-            <Link
-              key={p.slug}
-              href={`/projets/${p.slug}`}
-              className="group rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6 hover:border-white/20"
-            >
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <h2 className="text-base font-semibold">{p.title}</h2>
-                <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-zinc-200">
-                  {p.period}
-                </span>
-              </div>
-
-              <p className="mt-3 text-sm text-zinc-300">{p.intro}</p>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {p.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-zinc-200"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-5 text-sm text-zinc-400">
-                Ouvrir l’étude de cas <span className="text-zinc-200 group-hover:underline">→</span>
-              </div>
-            </Link>
-          ))}
+      <section className="page-hero">
+        <div className="container page-hero__grid">
+          <div>
+            <p className="kicker">Études de cas</p>
+            <h1>Le problème avant l’outil.<br />Le résultat avant l’effet vitrine.</h1>
+          </div>
+          <div>
+            <p>
+              Six projets pour montrer comment j’observe, structure, prototype
+              et déploie — du procédé industriel au produit numérique.
+            </p>
+            <span className="privacy-badge">Données publiques anonymisées</span>
+          </div>
+        </div>
+      </section>
+      <section className="section section--projects">
+        <div className="container">
+          <ProjectShowcase projects={projects} />
         </div>
       </section>
     </SiteShell>

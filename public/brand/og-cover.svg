@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F8FAFF"/>
+      <stop offset="1" stop-color="#EAF0FF"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#F4B740" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#F4B740" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity=".16" stroke="#3D68F5">
+    <path d="M0 70h1200M0 140h1200M0 210h1200M0 280h1200M0 350h1200M0 420h1200M0 490h1200M0 560h1200"/>
+    <path d="M70 0v630M140 0v630M210 0v630M280 0v630M350 0v630M420 0v630M490 0v630M560 0v630M630 0v630M700 0v630M770 0v630M840 0v630M910 0v630M980 0v630M1050 0v630M1120 0v630"/>
+  </g>
+  <circle cx="1090" cy="70" r="290" fill="url(#glow)"/>
+  <g transform="translate(80 76) scale(1.55)">
+    <rect width="64" height="64" rx="18" fill="#10213D"/>
+    <path d="M14 15h8v27h15v7H14V15Z" fill="#fff"/>
+    <path d="M31 15h9.5C52 15 58 21.4 58 31.7 58 42.2 51.6 49 40 49h-9V15Zm8.7 27c6.4 0 10-3.5 10-10.2 0-6.5-3.4-9.8-9.8-9.8H39v20h.7Z" fill="#4F7CFF"/>
+    <circle cx="52" cy="15" r="4" fill="#F4B740"/>
+  </g>
+  <text x="80" y="250" fill="#3D68F5" font-family="Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="4">MÉTHODES · INDUSTRIALISATION · INDUSTRIE 4.0</text>
+  <text x="80" y="345" fill="#10213D" font-family="Arial, sans-serif" font-size="72" font-weight="800" letter-spacing="-3">Lucas Desrousseaux</text>
+  <text x="80" y="415" fill="#40506A" font-family="Arial, sans-serif" font-size="34">Du terrain aux systèmes simples, mesurables et adoptés.</text>
+  <rect x="80" y="494" width="360" height="3" rx="2" fill="#3D68F5"/>
+  <rect x="446" y="494" width="78" height="3" rx="2" fill="#F4B740"/>
+</svg>
