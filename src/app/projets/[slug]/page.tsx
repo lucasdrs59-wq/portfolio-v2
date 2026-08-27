@@ -1,40 +1,115 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteShell } from "@/components/SiteShell";
 import { getProject, projects } from "@/lib/projects";
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return projects.map((project) => ({ slug: project.slug }));
 }
 
-export default function ProjetDetailPage({ params }: { params: { slug: string } }) {
-  const project = getProject(params.slug);
-  if (!project) return notFound();
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProject(slug);
+  if (!project) return {};
+  return {
+    title: project.title,
+    description: project.summary,
+    alternates: { canonical: `/projets/${project.slug}` },
+  };
+}
+
+export default async function ProjectDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project = getProject(slug);
+  if (!project) notFound();
 
   return (
     <SiteShell>
-      <section className="mx-auto max-w-3xl px-5 py-14">
-        <Link href="/projets" className="text-sm text-zinc-400 hover:text-white">
-          ← Retour aux projets
-        </Link>
+      <article>
+        <header className={`case-hero case-hero--${project.accent}`}>
+          <div className="container">
+            <Link href="/projets" className="back-link">← Tous les projets</Link>
+            <div className="case-hero__grid">
+              <div>
+                <p className="kicker">{project.category} · {project.status}</p>
+                <h1>{project.title}</h1>
+                <p className="case-hero__summary">{project.summary}</p>
+                <div className="tag-list">
+                  {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                </div>
+              </div>
+              <div className="case-metrics">
+                {project.metrics.map((metric) => (
+                  <div key={metric.label}>
+                    <strong>{metric.value}</strong><span>{metric.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </header>
 
-        <h1 className="mt-5 text-3xl font-semibold tracking-tight">{project.title}</h1>
-
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-zinc-200">
-            {project.period}
-          </span>
-          {project.tags.map((t) => (
-            <span key={t} className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-zinc-200">
-              {t}
-            </span>
-          ))}
+        <div className="container case-layout">
+          <aside className="case-sidebar">
+            <span>Projet</span><strong>{project.period}</strong>
+            <span>Format</span><strong>{project.status}</strong>
+            <span>Domaine</span><strong>{project.category}</strong>
+          </aside>
+          <div className="case-content">
+            <section>
+              <p className="kicker">01 · Enjeu</p>
+              <h2>Le problème à résoudre</h2>
+              <p className="case-content__lead">{project.challenge}</p>
+            </section>
+            <section>
+              <p className="kicker">02 · Démarche</p>
+              <h2>Une progression vérifiable</h2>
+              <ol className="case-steps">
+                {project.approach.map((step, index) => (
+                  <li key={step}><span>{String(index + 1).padStart(2, "0")}</span><p>{step}</p></li>
+                ))}
+              </ol>
+            </section>
+            <section>
+              <p className="kicker">03 · Livrables</p>
+              <h2>Ce qui a été produit</h2>
+              <div className="deliverable-grid">
+                {project.deliverables.map((deliverable) => (
+                  <div key={deliverable}><span aria-hidden="true">✓</span>{deliverable}</div>
+                ))}
+              </div>
+            </section>
+            <section>
+              <p className="kicker">04 · Résultats</p>
+              <h2>Ce que la solution rend possible</h2>
+              <ul className="outcome-list">
+                {project.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}
+              </ul>
+            </section>
+            {project.confidentiality ? (
+              <aside className="case-confidentiality">
+                <strong>Confidentialité maîtrisée</strong>
+                <p>{project.confidentiality}</p>
+              </aside>
+            ) : null}
+            <nav className="case-next" aria-label="Navigation entre projets">
+              <Link href="/projets">Voir toutes les études</Link>
+              <Link href="/contact">Discuter de cette démarche →</Link>
+            </nav>
+          </div>
         </div>
-
-        <p className="mt-5 text-zinc-300">{project.intro}</p>
-      </section>
+      </article>
     </SiteShell>
   );
 }

@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lucas Desrousseaux — Portfolio
 
-## Getting Started
+[![CI](https://github.com/lucasdrs59-wq/portfolio-v2/actions/workflows/ci.yml/badge.svg)](https://github.com/lucasdrs59-wq/portfolio-v2/actions/workflows/ci.yml)
+[![Next.js](https://img.shields.io/badge/Next.js-16.3-10213D)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3D68F5)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-178F83.svg)](LICENSE)
 
-First, run the development server:
+Portfolio public de **Lucas Desrousseaux**, à l’intersection des méthodes, de
+l’industrialisation, de la métallurgie et de l’Industrie 4.0.
+
+**Site : [lucasdrs59-wq.github.io](https://lucasdrs59-wq.github.io)**
+
+## Ce que montre ce dépôt
+
+- six études de cas orientées problème → démarche → livrables → résultats ;
+- une interface claire, responsive et accessible ;
+- des filtres projets et aperçus interactifs sans dépendance front superflue ;
+- une publication statique compatible GitHub Pages ;
+- un standard de documentation, confidentialité et archivage réutilisable.
+
+Les situations industrielles sont anonymisées. Les chiffres, libellés et jeux de
+données publiables sont synthétiques ou suffisamment agrégés pour ne révéler
+aucune information interne.
+
+## Démarrage rapide
+
+Prérequis : Node.js 22 et npm 10 ou supérieur.
 
 ```bash
+git clone https://github.com/lucasdrs59-wq/portfolio-v2.git
+cd portfolio-v2
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Puis ouvrir [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Commandes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Commande | Usage |
+|---|---|
+| `npm run dev` | Serveur de développement |
+| `npm run lint` | Contrôle ESLint, zéro avertissement accepté |
+| `npm run typecheck` | Vérification TypeScript stricte |
+| `npm run build` | Export statique dans `out/` |
+| `npm run verify` | Lint + types + build |
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+```text
+.
+├── .github/                 # CI, Dependabot, modèles et responsabilités
+├── docs/
+│   ├── architecture/        # Décisions techniques
+│   ├── archive/             # Index des documents historiques
+│   ├── governance/          # Standards, archivage, confidentialité
+│   └── projects/            # Modèle éditorial des études de cas
+├── public/
+│   └── brand/               # Identité LD et visuel social
+└── src/
+    ├── app/                 # Routes, SEO et pages
+    ├── components/          # Shell, logo, exploration des projets
+    └── lib/projects.ts      # Source unique du contenu projet
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Principes de contribution
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Ouvrir une branche courte depuis `main`.
+2. Garder les données industrielles hors du dépôt.
+3. Expliquer le pourquoi dans la PR et les décisions structurantes dans
+   `docs/architecture/`.
+4. Exécuter `npm run verify`.
+5. Fusionner puis supprimer la branche.
 
-## Deploy on Vercel
+Le détail se trouve dans [CONTRIBUTING.md](.github/CONTRIBUTING.md) et dans les
+[standards de dépôt](docs/governance/REPOSITORY_STANDARDS.md).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Archivage et sécurité
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- un instantané distant `archive/pre-premium-2026-08-27` conserve l’état avant refonte ;
+- les branches de travail sont supprimées après fusion ;
+- les versions publiées utilisent des tags sémantiques ;
+- les documents obsolètes sont indexés dans `docs/archive/YYYY/` ;
+- toute vulnérabilité doit être signalée selon [SECURITY.md](SECURITY.md).
+
+## Licence
+
+Code sous [licence MIT](LICENSE). Les textes, visuels personnels et marques
+employeurs restent attribués à leurs propriétaires respectifs.

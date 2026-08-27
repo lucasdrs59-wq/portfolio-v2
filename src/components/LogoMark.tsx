@@ -1,0 +1,25 @@
+type LogoMarkProps = {
+  className?: string;
+  title?: string;
+};
+
+export function LogoMark({ className, title }: LogoMarkProps) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 64 64"
+      role={title ? "img" : undefined}
+      aria-hidden={title ? undefined : true}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {title ? <title>{title}</title> : null}
+      <rect width="64" height="64" rx="18" fill="#10213D" />
+      <path d="M14 15h8v27h15v7H14V15Z" fill="#FFFFFF" />
+      <path
+        d="M31 15h9.5C52 15 58 21.4 58 31.7 58 42.2 51.6 49 40 49h-9V15Zm8.7 27c6.4 0 10-3.5 10-10.2 0-6.5-3.4-9.8-9.8-9.8H39v20h.7Z"
+        fill="#4F7CFF"
+      />
+      <circle cx="52" cy="15" r="4" fill="#F4B740" />
+    </svg>
+  );
+}
