@@ -7,6 +7,7 @@ dépendre de la mémoire d’une personne.
 |---|---|
 | `architecture/` | Décisions techniques et leurs compromis |
 | `governance/` | Standards, archivage et confidentialité |
+| `infrastructure/` | Environnements, déploiement et données |
 | `projects/` | Modèle éditorial des études de cas |
 | `archive/` | Index des documents historiques conservés |
 
