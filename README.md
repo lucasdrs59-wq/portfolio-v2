@@ -54,6 +54,7 @@ Puis ouvrir [http://localhost:3000](http://localhost:3000).
 │   ├── architecture/        # Décisions techniques
 │   ├── archive/             # Index des documents historiques
 │   ├── governance/          # Standards, archivage, confidentialité
+│   ├── infrastructure/      # Environnements, Vercel et Supabase
 │   └── projects/            # Modèle éditorial des études de cas
 ├── public/
 │   └── brand/               # Identité LD et visuel social
@@ -74,6 +75,9 @@ Puis ouvrir [http://localhost:3000](http://localhost:3000).
 
 Le détail se trouve dans [CONTRIBUTING.md](.github/CONTRIBUTING.md) et dans les
 [standards de dépôt](docs/governance/REPOSITORY_STANDARDS.md).
+
+La stratégie de déploiement, de secrets et de données est décrite dans la
+[documentation des environnements](docs/infrastructure/ENVIRONMENTS.md).
 
 ## Archivage et sécurité
 

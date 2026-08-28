@@ -39,3 +39,18 @@ identité LD propriétaire.
 
 **Pourquoi :** rendu rapide, aucune requête vers un fournisseur de polices et
 cohérence sur toutes les pages.
+
+## ADR-006 — Hébergement statique et services découplés
+
+**Décision :** conserver GitHub Pages comme URL publique canonique et Vercel
+comme miroir de production et moteur de previews. Ne connecter Supabase qu'à
+une application nécessitant réellement des données, une authentification ou des
+fonctions serveur.
+
+**Pourquoi :** le portfolio n'a ni secret ni donnée dynamique. Le découplage
+réduit la surface d'attaque, évite les coûts inutiles et permet de faire évoluer
+chaque future application avec ses propres environnements.
+
+**Conséquence :** aucune variable d'environnement n'est requise pour ce dépôt.
+Une future application Supabase doit conserver ses migrations dans son propre
+dépôt et séparer strictement développement, preview et production.
